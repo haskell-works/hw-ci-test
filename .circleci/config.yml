@@ -8,14 +8,14 @@ orbs:
 workflows:
   multiple-ghc-build:
     jobs:
-      - haskell/build:
+      - haskell/build-with-binary-cache:
           name: GHC 8.4.4
           executor: haskell/ghc-8_4_4
           context: haskell-ci
           workspace-dir: workspace/ghc-8.4.4
           write-result-workspace: true
 
-      - haskell/build:
+      - haskell/build-with-binary-cache:
           name: GHC 8.6.5
           executor: haskell/ghc-8_6_5
           context: haskell-ci
