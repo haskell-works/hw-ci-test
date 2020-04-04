@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  haskell: haskell-works/haskell-build@dev:araga
-  github: haskell-works/github-release@1.2.1
+  haskell: haskell-works/haskell-build@4.1.7
+  github: haskell-works/github-release@1.3.3
   hackage: haskell-works/hackage@dev:araga
 
 workflows:
@@ -18,6 +18,13 @@ workflows:
       - haskell/build-with-binary-cache:
           name: GHC 8.6.5
           executor: haskell/ghc-8_6_5
+          context: haskell-ci
+          workspace-dir: workspace/ghc-8.6.5
+          write-result-workspace: true
+
+      - haskell/build-with-binary-cache:
+          name: GHC 8.8.3
+          executor: haskell/ghc-8_8_3
           context: haskell-ci
           workspace-dir: workspace/ghc-8.6.5
           write-result-workspace: true
