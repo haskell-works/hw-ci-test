@@ -4,6 +4,7 @@ orbs:
   haskell: haskell-works/haskell-build@4.1.7
   github: haskell-works/github-release@1.3.1
   hackage: haskell-works/hackage@1.4.1
+  merge-point: haskell-works/merge-point@1.0.0
 
 workflows:
   multiple-ghc-build:
@@ -21,6 +22,12 @@ workflows:
           context: haskell-ci
           workspace-dir: workspace/ghc-8.6.5
           write-result-workspace: true
+
+      - merge-point/merge-point:
+          name: Build Ok
+          requires:
+            - GHC 8.4.4
+            - GHC 8.6.5
 
       # - hackage/upload:
       #     context: haskell-ci
